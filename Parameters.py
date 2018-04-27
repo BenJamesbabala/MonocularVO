@@ -5,7 +5,8 @@ import numpy as np
 # Dataset paths
 # inputPath = Path("D:\FinalProjectVisualOdometry\data\pmoreels-3d\Horse\Bottom")
 inputPath = Path("C:/Users/cagda/Desktop/LSD_SLAM/data_odometry_gray/dataset/sequences/00/image_0")
-
+# inputPath = Path("D:\AGZ\MAV Images")
+# inputPath = Path("D:\\100831_155323_MultiCamera0_subset_db")
 # Lucas-Kanade Tracker parameters
 lk_params = dict(winSize=(15, 15),
                  maxLevel=2,
@@ -20,14 +21,23 @@ feature_params = dict(maxCorners=500,
 
 
 # Values for left images(image_0) in each sequence
-focal = 718.856
-pp = (607.1928, 185.2157)
+# focalX = 718.856
+# focaly = 718.856
+# pp = (607.1928, 185.2157)
 
 # At Şeysileri
-# focal = 4300.02832672
+# focalX = 4300.02832672
+# focalY = 4300.02832672
 # pp = (1031.89646409, 742.896640043)
 
 
-K = np.array([[focal, 0, pp[0]],
-     [0, focal, pp[1]],
-     [0, 0, 1]])
+# Kagaru
+focalX = 1641.99751
+focalY = 1642.30964
+pp = (642.15139, 470.34929)
+
+K = np.array([[focalX, 0, pp[0]],
+              [0, focalY, pp[1]],
+              [0, 0, 1]])
+
+min_features = 100

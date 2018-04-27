@@ -3,6 +3,7 @@ import math
 import vtk
 from vtk.util.numpy_support import vtk_to_numpy
 
+
 # OpenCV function -> samples/python/common.py
 def draw_str(dst, target, s):
     x, y = target
@@ -71,6 +72,7 @@ def model_camera(R, t, scale):
     lines = vtk_to_numpy(polydata.GetLines().GetData())
     return points, lines
 
+
 def buildObjForCamera(path, R, t, padding):
     pth = Path(path)
     pth.mkdir(parents=True, exist_ok=True)
@@ -90,3 +92,24 @@ def buildObjForCamera(path, R, t, padding):
 
     padding += cur_padding
     return padding
+
+
+def buildObj(path, vertex):
+    pth = Path(path)
+    pth.mkdir(parents=True, exist_ok=True)
+    f = pth.joinpath("path.obj").open(mode="a+")
+    f.write("v " + str(vertex[0][0]) + " " + str(vertex[1][0]) + " " + str(vertex[2][0]) + "\n")
+    f.close()
+
+def buildObjFromPointCloud(path, cloud):
+    pth = Path(path)
+    pth.mkdir(parents=True, exist_ok=True)
+    f = pth.joinpath("path.obj").open(mode="a+")
+    string = ""
+    for i in range(len(cloud)):
+        string += "v " + str(cloud[i][0]) + " " + str(cloud[i][1]) + " " + str(cloud[i][2]) + "\n"
+    f.write(string)
+    f.close()
+
+def distance(pt1, pt2):
+    return math.sqrt((pt1[0]-pt2[0])**2 + (pt1[1] - pt2[1])**2 + (pt1[2] - pt2[2])**2)
