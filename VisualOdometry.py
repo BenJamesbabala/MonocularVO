@@ -74,6 +74,8 @@ class MonocularVO:
             return
 
         else:
+            if self.previous_features.shape[0] < min_features:
+                self.previous_features = self.tracker.detect(self.current_frame)
             self.previous_features, self.current_features = self.tracker.update(self.previous_frame, self.current_frame, self.previous_features)
             E, _ = cv.findEssentialMat(self.current_features, self.previous_features, K)
             _, R, t, _ = cv.recoverPose(E, self.current_features, self.previous_features, K)
@@ -82,8 +84,6 @@ class MonocularVO:
             self.compute_relative_scale()
             self.compute_total_rotation_translation(R, t)
             # buildObjFromPointCloud("dump/3dmodelthingy/"+str(self.tracker.frame_idx), self.triangulate_points(R, t))
-            if self.previous_features.shape[0] < min_features:
-                self.current_features = self.tracker.detect(self.current_frame)
 
             self.previous_features = self.current_features
             self.previous_frame = self.current_frame

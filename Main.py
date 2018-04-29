@@ -22,7 +22,7 @@ if __name__ == '__main__':
             cv.imshow("frame", frame)
             buildObj("dump/kesinsonbukesin/", vo.current_t)
             x = int(vo.current_t[0][0])+290
-            y = int(vo.current_t[2][0])+90
+            y = height - int(vo.current_t[2][0])+90
             cv.circle(trajectory, (x, y), 1, (0, 0, 255))
             cv.imshow("Trajectory", trajectory)
             ch = cv.waitKey(1)

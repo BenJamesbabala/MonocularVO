@@ -21,9 +21,9 @@ feature_params = dict(maxCorners=500,
 
 
 # Values for left images(image_0) in each sequence
-# focalX = 718.856
-# focaly = 718.856
-# pp = (607.1928, 185.2157)
+focalX = 718.856
+focalY = 718.856
+pp = (607.1928, 185.2157)
 
 # At Şeysileri
 # focalX = 4300.02832672
@@ -32,12 +32,12 @@ feature_params = dict(maxCorners=500,
 
 
 # Kagaru
-focalX = 1641.99751
-focalY = 1642.30964
-pp = (642.15139, 470.34929)
+# focalX = 1641.99751
+# focalY = 1642.30964
+# pp = (642.15139, 470.34929)
 
 K = np.array([[focalX, 0, pp[0]],
               [0, focalY, pp[1]],
               [0, 0, 1]])
 
-min_features = 100
+min_features = 150
