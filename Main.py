@@ -14,6 +14,7 @@ if __name__ == '__main__':
     for image in Parameters.inputPath.iterdir():
         frame = cv.imread(os.path.join(Parameters.inputPath, image), 0)
         height, width = frame.shape[:2]
+        # frame = cv.resize(frame, (width//2, height//2))
         print(vo.tracker.frame_idx)
         vo.update(frame)
         if vo.tracker.frame_idx > 1:

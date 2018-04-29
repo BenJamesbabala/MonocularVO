@@ -40,4 +40,4 @@ K = np.array([[focalX, 0, pp[0]],
               [0, focalY, pp[1]],
               [0, 0, 1]])
 
-min_features = 150
+min_features = 185
