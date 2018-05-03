@@ -37,6 +37,5 @@ def draw():
         circle(trajectory[-2], 4)
 
 
-
 if __name__ == '__main__':
     run(frame_rate=30)

@@ -2,6 +2,7 @@ from Parameters import inputPath
 import os
 import cv2 as cv
 
+
 class FileCapture:
     def __init__(self):
         self.frame_no = 0

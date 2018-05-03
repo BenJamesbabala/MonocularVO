@@ -4,6 +4,7 @@ import vtk
 from vtk.util.numpy_support import vtk_to_numpy
 
 
+
 # OpenCV function -> samples/python/common.py
 def draw_str(dst, target, s):
     x, y = target
@@ -60,8 +61,8 @@ def create_frustum(aspect_ratio, fovy, scale, R, t):
 
 
 def model_camera(R, t, scale):
-    f_x = focal
-    f_y = focal
+    f_x = focalX
+    f_y = focalY
     c_y = pp[1]
 
     fovy = 2.0 * math.atan2(c_y, f_y) * 180 / math.pi
@@ -113,3 +114,5 @@ def buildObjFromPointCloud(path, cloud):
 
 def distance(pt1, pt2):
     return math.sqrt((pt1[0]-pt2[0])**2 + (pt1[1] - pt2[1])**2 + (pt1[2] - pt2[2])**2)
+
+

@@ -15,7 +15,7 @@ class MonocularVO:
         self.previous3d = None
         self.current3d = None
         self.relative_scale = 0.3
-        self.trajectory = np.zeros((3000, 3000, 3), np.uint8)
+        self.trajectory = np.zeros((800, 600, 3), np.uint8)
 
     def triangulate_points(self, R, t):
         P0 = np.array([[1, 0, 0, 0],
