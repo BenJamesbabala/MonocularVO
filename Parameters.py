@@ -4,7 +4,7 @@ import numpy as np
 
 # Dataset paths
 # inputPath = Path("D:\FinalProjectVisualOdometry\data\pmoreels-3d\Horse\Bottom")
-inputPath = Path("C:/Users/cagda/Desktop/LSD_SLAM/data_odometry_gray/dataset/sequences/00/image_0")
+inputPath = Path("C:/Users/cagda/Desktop/LSD_SLAM/data_odometry_gray/dataset/sequences/02/image_0")
 # inputPath = Path("D:\AGZ\MAV Images")
 # inputPath = Path("D:\\100831_155323_MultiCamera0_subset_db")
 # Lucas-Kanade Tracker parameters
@@ -40,4 +40,4 @@ K = np.array([[focalX, 0, pp[0]],
               [0, focalY, pp[1]],
               [0, 0, 1]])
 
-min_features = 185
+min_features = 1500
