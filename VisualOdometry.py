@@ -83,7 +83,8 @@ class MonocularVO:
             self.current3d = self.triangulate_points(R, t)
             # Scale and compute total translation rotation
             self.compute_relative_scale()
-            self.compute_total_rotation_translation(R, t)
+            if t[0][0] >= self.relative_scale or t[1][0] >= self.relative_scale or t[2][0] >= self.relative_scale:
+                self.compute_total_rotation_translation(R, t)
             # buildObjFromPointCloud("dump/3dmodelthingy/"+str(self.tracker.frame_idx), self.triangulate_points(R, t))
 
             self.previous_features = self.current_features

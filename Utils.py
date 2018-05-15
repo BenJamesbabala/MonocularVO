@@ -4,10 +4,11 @@ import vtk
 from vtk.util.numpy_support import vtk_to_numpy
 
 
-
 # OpenCV function -> samples/python/common.py
 def draw_str(dst, target, s):
     x, y = target
+    text = cv.getTextSize(s, cv.FONT_HERSHEY_PLAIN, 1.0, 1)
+    cv.rectangle(dst, target, text[0], (0, 0, 0), cv.FILLED)
     cv.putText(dst, s, (x + 1, y + 1), cv.FONT_HERSHEY_PLAIN, 1.0, (0, 0, 0), thickness=2, lineType=cv.LINE_AA)
     cv.putText(dst, s, (x, y), cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), lineType=cv.LINE_AA)
 
