@@ -45,8 +45,9 @@ class MonocularVO:
 
     # The arguments R and t is what returns from the cv.RecoverPose function
     def compute_total_rotation_translation(self, R, t):
-        self.current_t += self.relative_scale*self.current_R.dot(t)
-        self.current_R = R.dot(self.current_R)
+        if np.linalg.norm(R.dot(R.T) - np.identity(3, dtype=R.dtype)) < 1e-6:
+            self.current_t += self.relative_scale*self.current_R.dot(t)
+            self.current_R = R.dot(self.current_R)
 
     def update(self, current_frame):
         self.current_frame = current_frame
@@ -83,8 +84,7 @@ class MonocularVO:
             self.current3d = self.triangulate_points(R, t)
             # Scale and compute total translation rotation
             self.compute_relative_scale()
-            if t[0][0] >= self.relative_scale or t[1][0] >= self.relative_scale or t[2][0] >= self.relative_scale:
-                self.compute_total_rotation_translation(R, t)
+            self.compute_total_rotation_translation(R, t)
             # buildObjFromPointCloud("dump/3dmodelthingy/"+str(self.tracker.frame_idx), self.triangulate_points(R, t))
 
             self.previous_features = self.current_features

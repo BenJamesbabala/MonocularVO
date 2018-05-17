@@ -4,9 +4,12 @@ import numpy as np
 
 # Dataset paths
 # inputPath = Path("D:\FinalProjectVisualOdometry\data\pmoreels-3d\Horse\Bottom")
-# inputPath = Path("C:/Users/cagda/Desktop/LSD_SLAM/data_odometry_gray/dataset/sequences/09/image_0")
+inputPath = Path("C:/Users/cagda/Desktop/LSD_SLAM/data_odometry_gray/dataset/sequences/09/image_0")
 # inputPath = Path("D:\AGZ\MAV Images")
-inputPath = Path("C:/Users/cagda/Desktop/mav01/cam0/data")
+# inputPath = Path("C:/Users/cagda/Desktop/mav01/cam0/data")
+
+localPathThresh = 250
+
 # Lucas-Kanade Tracker parameters
 lk_params = dict(winSize=(15, 15),
                  maxLevel=2,
@@ -19,11 +22,12 @@ feature_params = dict(maxCorners=500,
                       minDistance=7,
                       blockSize=7)
 
+dist = np.array([-0.28340811, 0.07395907, 0.00019359, 1.76187114e-05])
 
 # Values for left images(image_0) in each sequence
-# focalX = 718.856
-# focalY = 718.856
-# pp = (607.1928, 185.2157)
+focalX = 718.856
+focalY = 718.856
+pp = (607.1928, 185.2157)
 
 # At Şeysileri
 # focalX = 4300.02832672
@@ -37,9 +41,9 @@ feature_params = dict(maxCorners=500,
 # pp = (642.15139, 470.34929)
 
 # Euroc MAV dataset
-focalX = 458.654
-focalY = 457.296
-pp = (367.215, 248.375)
+# focalX = 458.654
+# focalY = 457.296
+# pp = (367.215, 248.375)
 
 K = np.array([[focalX, 0, pp[0]],
               [0, focalY, pp[1]],
